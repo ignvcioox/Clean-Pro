@@ -1,0 +1,24 @@
+<main class="grid min-h-screen lg:grid-cols-[2fr_1fr] bg-zinc-950">
+   <aside class="relative hidden min-h-screen lg:block bg-zinc-900" aria-hidden="true">
+      <span id="img-loader" class="absolute inset-0 flex items-center justify-center">
+         <span class="loading loading-spinner loading-lg text-zinc-400"></span>
+      </span>
+      <img src="/images/auth-bg.webp" alt="Imagen de la autenticación" class="object-cover object-center w-full h-full"
+         loading="lazy" onload="document.getElementById('img-loader').style.display='none'" />
+   </aside>
+
+   <section class="relative flex items-center justify-center animate-fadeIn " aria-label="Formulario de autenticación ">
+      <nav class="absolute flex items-center gap-2 p-2 text-zinc-300 top-6 left-6">
+         <a routerLink="/" class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+               stroke="currentColor" class="size-4">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            <span class="text-sm font-medium text-zinc-300">Volver al Inicio</span>
+         </a>
+      </nav>
+      <div class="w-full p-6">
+         <router-outlet />
+      </div>
+   </section>
+</main>

@@ -1,0 +1,57 @@
+<div class="overflow-x-auto">
+   <table class="table">
+      <thead>
+         <tr>
+            <th>
+               <label>
+                  <input type="checkbox" class="transition scale-125 border-2 checkbox accent-purple-500 border-zinc-400 hover:border-purple-500" />
+               </label>
+            </th>
+            <th>Título</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th></th>
+         </tr>
+      </thead>
+      <tbody>
+         @for (product of products(); track product.id) {
+         <tr>
+            <th>
+               <label>
+                  <input type="checkbox" class="transition scale-125 border-2 checkbox accent-purple-500 border-zinc-400 hover:border-purple-500" />
+               </label>
+            </th>
+            <td>
+               <div class="flex items-center gap-3">
+                  <div class="avatar">
+                     <div class="w-12 h-12 mask mask-squircle">
+                        <img [src]="product.images | productImage" [alt]="product.title" />
+                     </div>
+                  </div>
+                  <div>
+                     <div [routerLink]="['/admin/products', product.id]" class="font-bold">{{product.title}}</div>
+                     <div class="text-sm opacity-50">{{product.description | slice: 0:50}}...</div>
+                  </div>
+               </div>
+            </td>
+            <td>
+               {{product.price | currency}}
+            </td>
+            <td>
+               @if (product.stock <= 10) { <span class="badge badge-error">{{product.stock}}</span>
+                  }
+                  @else if (product.stock <= 20) { <span class="badge badge-warning">{{product.stock}}</span>
+                     }
+                     @else {
+                     <span class="badge badge-success">{{product.stock}}</span>
+                     }
+            </td>
+            <th>
+               <a [routerLink]="['/admin/products', product.id]" class="btn btn-ghost">
+                  Detalles
+               </a>
+            </th>
+         </tr>
+         }
+   </table>
+</div>
