@@ -1,5 +1,29 @@
 # CarDetailingShop
 
+/_ "node_modules/@angular/animations": {
+"version": "18.2.14",
+"resolved": "https://registry.npmjs.org/@angular/animations/-/animations-18.2.14.tgz",
+"integrity": "sha512-Kp/MWShoYYO+R3lrrZbZgszbbLGVXHB+39mdJZwnIuZMDkeL3JsIBlSOzyJRTnpS1vITc+9jgHvP/6uKbMrW1Q==",
+"license": "MIT",
+"optional": true,
+"peer": true,
+"dependencies": {
+"tslib": "^2.3.0"
+},
+"engines": {
+"node": "^18.19.1 || ^20.11.1 || >=22.0.0"
+},
+"peerDependencies": {
+"@angular/core": "18.2.14"
+}
+}, _/
+
+        "@angular/animations": "18.2.14",
+
+        "@angular/animations": {
+          "optional": true
+        }
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
 
 ## Development server
@@ -25,4 +49,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
 # Clean-Pro
