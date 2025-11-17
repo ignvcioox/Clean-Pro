@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #09090b;
+}
+
+/* Form */
+
+.form-container {
+  @apply mx-auto w-full max-w-sm rounded-lg border border-zinc-800 bg-zinc-900 p-6 shadow-md;
+}
+
+/* Inputs */
+
+.input-group {
+  @apply mb-2 flex items-center gap-3 rounded bg-zinc-800 p-3;
+}
+
+.input-base {
+  @apply w-full border-none bg-zinc-800 text-white placeholder:text-sm focus:outline-none;
+}
+
+.form-error-list {
+  @apply mb-2 ml-4 list-disc text-xs text-red-400;
+}
+
+.button-primary {
+  @apply mt-2 inline-flex w-full items-center justify-center gap-2 rounded bg-blue-500 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
+
+/* Error Message */
+
+.error-message {
+  @apply animate-slide-in fixed right-2 top-20 z-20 flex max-w-xs items-center gap-2 rounded border border-red-700 bg-red-900/80 px-4 py-2 text-red-200 shadow-lg;
+}
+
+.error-message svg {
+  @apply h-5 w-5 text-red-400;
+}
+
+.error-message span {
+  @apply text-wrap text-sm font-medium;
+}

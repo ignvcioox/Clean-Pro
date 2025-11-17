@@ -1,0 +1,66 @@
+<form class="form-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+   <h1 class="mb-2 text-xl font-bold text-white">Clean Pro</h1>
+   <p class="mb-6 text-sm break-normal text-zinc-400">Accede con tu correo electrónico y contraseña</p>
+
+   <!-- Correo electrónico -->
+   <label class="input-group" for="email">
+      <app-icon name="mail" />
+      <input id="email" formControlName="email" type="email" placeholder="cleanpro@google.com" class="input-base" />
+   </label>
+   @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
+   <ul class="form-error-list">
+      <li>Ingresa un correo electrónico válido</li>
+   </ul>
+   }
+
+   <!-- Contraseña -->
+   <label class="input-group" for="password">
+      <input id="password" formControlName="password" [type]="passwordType()" placeholder="Contraseña"
+         class="input-base" />
+      <button type="button" class="p-1 ml-2" (click)="togglePassword()" (mousedown)="$event.preventDefault()"
+         tabindex="-1">
+         @if (!showPassword()) {
+         <app-icon name="eye" />
+         }@else {
+         <app-icon name="eye-off" />
+         }
+      </button>
+   </label>
+   @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
+   <ul class="form-error-list">
+      <li>Mínimo 6 caracteres y Máximo 50 caracteres</li>
+      <li>Una mayúscula y una minúscula</li>
+      <li>Un número</li>
+      <li>Un carácter especial</li>
+      <li>Sin espacios</li>
+   </ul>
+   }
+
+   <button type="submit" class="button-primary">
+      @if (isPosting()) {
+      Procesando...
+      <span class="loading loading-spinner loading-xs"></span>
+      }
+      @else {
+      Iniciar sesión
+      }
+   </button>
+
+   <p class="mt-4 text-sm text-center text-zinc-400">
+      ¿No tienes cuenta?
+      <a routerLink="/auth/register" class="underline text-zinc-300">Crea una aquí</a>
+   </p>
+
+   <a routerLink="/auth/recovery-password" class="flex justify-center mt-2 text-sm">
+      ¿Olvidaste tu contraseña?
+   </a>
+
+</form>
+
+@if(errorMessage()) {
+<div class="error-message">
+   <app-icon name="error" />
+   <span>{{errorMessage()}}</span>
+</div>
+}

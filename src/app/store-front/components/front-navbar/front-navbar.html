@@ -1,0 +1,44 @@
+<nav class="border-b shadow-sm navbar bg-zinc-950 border-zinc-900" aria-label="Main navigation">
+   <div class="navbar-start">
+      <div class="drawer lg:hidden">
+         <input id="mobile-sidebar" type="checkbox" class="drawer-toggle" />
+         <!-- Image -->
+         <div class="btn btn-ghost" for="mobile-sidebar">
+            <label for="mobile-sidebar" class="cursor-pointer" aria-label="Abrir menú">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+               </svg>
+            </label>
+         </div>
+         <div class="z-50 drawer-side">
+            <label for="mobile-sidebar" class="drawer-overlay"></label>
+            <ul class="w-64 min-h-full p-4 text-white menu bg-zinc-950">
+               <a routerLink="/" aria-label="Inicio">
+                  <img src="images/clean-pro.webp" alt="Clean Pro Logo" class="object-contain w-40 h-14 invert">
+               </a>
+               <a routerLink="/products">Productos</a>
+               <a routerLink="/services">Servicios</a>
+               <a routerLink="/testimonials">Testimonios</a>
+               <a routerLink="/contact">Contacto</a>
+            </ul>
+         </div>
+      </div>
+      <a routerLink="/" class="hidden lg:block" aria-label="Inicio">
+         <img src="images/clean-pro.webp" alt="Clean Pro Logo" class="object-contain w-40 h-14 invert">
+      </a>
+   </div>
+   <div class="hidden navbar-center lg:flex">
+      <ul class="gap-4 px-1 menu menu-horizontal">
+         <a (click)="scrollToId($event, 'products')" class="text-xs text-zinc-300 hover:text-white">Productos</a>
+         <a (click)="scrollToId($event, 'service')" class="text-xs text-zinc-300 hover:text-white">Servicios</a>
+         <a (click)="scrollToId($event, 'testimonials')" class="text-xs text-zinc-300 hover:text-white">Testimonios</a>
+         <a (click)="scrollToId($event, 'contact')" class="text-xs text-zinc-300 hover:text-white">Contactanos</a>
+      </ul>
+   </div>
+   <div class="gap-2 px-4 navbar-end">
+      <front-navbar-cart />
+      <front-navbar-user />
+   </div>
+</nav>

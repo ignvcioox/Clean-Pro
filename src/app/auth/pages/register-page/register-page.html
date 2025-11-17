@@ -1,0 +1,72 @@
+<form class="form-container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+   <h1 class="mb-2 text-2xl font-bold text-white">Clean Pro</h1>
+   <p class="mb-6 text-sm break-words text-zinc-400">Registrate con tu correo electrónico y contraseña</p>
+
+   <!-- Usuario -->
+   <label class="input-group" for="fullName">
+      <app-icon name="user" />
+      <input id="fullName" formControlName="fullName" type="text" placeholder="Benjamín López" class="input-base" />
+   </label>
+   @if (registerForm.get('fullName')?.touched && registerForm.get('fullName')?.invalid) {
+   <ul class="form-error-list">
+      <li>Mínimo 3 caracteres y Máximo 50 caracteres</li>
+   </ul>
+   }
+
+   <!-- Correo electrónico -->
+   <label class="input-group" for="email">
+      <app-icon name="mail" />
+      <input id="email" formControlName="email" type="email" placeholder="cleanpro@google.com" class="input-base" />
+   </label>
+   @if(registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
+   <ul class="form-error-list">
+      <li>Ingresa un correo electrónico válido</li>
+   </ul>
+   }
+
+   <!-- Contraseña -->
+   <label class="input-group" for="password">
+      <input id="password" formControlName="password" [type]="passwordType()" placeholder="Contraseña"
+         class="input-base" />
+      <button type="button" class="p-1 ml-2" (click)="togglePassword()" (mousedown)="$event.preventDefault()"
+         tabindex="-1">
+         @if (!showPassword()) {
+         <app-icon name="eye" />
+         }@else {
+         <app-icon name="eye-off" />
+         }
+      </button>
+   </label>
+   @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid) {
+   <ul class="form-error-list">
+      <li>Mínimo 6 caracteres y Máximo 50 caracteres</li>
+      <li>Una mayúscula y una minúscula</li>
+      <li>Un número</li>
+      <li>Un carácter especial</li>
+      <li>Sin espacios</li>
+   </ul>
+   }
+
+   <button type="submit" class="button-primary">
+      @if (isPosting()) {
+      Procesando...
+      <span class="loading loading-spinner loading-xs"></span>
+      }
+      @else {
+      Registrarse
+      }
+   </button>
+
+   <p class="mt-4 text-sm text-center text-zinc-400">
+      ¿Ya tienes cuenta?
+      <a routerLink="/auth/login" class="underline text-zinc-300">Inicia sesión aquí</a>
+   </p>
+</form>
+
+@if(errorMessage()) {
+<div class="error-message">
+   <app-icon name="error" />
+   <span>{{errorMessage()}}</span>
+</div>
+}

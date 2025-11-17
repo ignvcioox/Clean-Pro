@@ -1,0 +1,25 @@
+import { Pipe, PipeTransform } from '@angular/core';
+
+import { environment } from '@environments/environment';
+
+const baseURL = environment.baseURL;
+
+@Pipe({
+  name: 'productImage',
+  standalone: true,
+})
+export class ProductImagePipe implements PipeTransform {
+  transform(value: string | string[]): string {
+    if (typeof value === 'string') {
+      return `${baseURL}/files/product/${value}`;
+    }
+
+    const image = value.at(0);
+
+    if (!image) {
+      return '/images/no-image.jpg';
+    }
+
+    return `${baseURL}/files/product/${image}`;
+  }
+}
